@@ -1,0 +1,30 @@
+/* CSS declarations go here */
+.rosapp {
+	font-family: "Arial", Arial, sans-serif;
+}
+.box {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.page-title {
+  text-align: center;
+  font-weight: 500;
+  font-size: 2em;
+  line-height: 1.0;
+}
+.codebox{
+	margin-left: 25%;
+	margin-right: 25%;
+	width: 50%;
+  height: 50%;
+  border-left: 2px solid black;
+  border-right: 2px solid black	;
+  text-align: left;
+	background-color: lightgrey
+}
+.link{
+	font-weight: 300;
+  font-size: 0.8em;
+  line-height: 1.0;	
+}

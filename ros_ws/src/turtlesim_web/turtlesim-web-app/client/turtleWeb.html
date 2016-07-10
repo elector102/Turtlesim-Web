@@ -1,0 +1,31 @@
+<head>
+<title>TurtleWeb-Threejs</title>
+<meta charset="utf-8" />
+</head>
+
+<body class="box rosapp">
+
+  <h1 class="page-title">TurtleWeb Threejs</h1>
+
+  <div id="statusIndicator">
+    <p id="connecting">
+      Connecting to rosbridge...
+    </p>
+    <p id="connected" style="color:#00D600; display:none">
+      rosbridge status: Connected
+    </p>
+    <p id="error" style="color:#FF0000; display:none">
+      Error in the backend!
+    </p>
+    <p id="closed" style="display:none">
+      Connection closed.
+    </p>
+  </div>
+    <div id="canvas"></div>
+    {{> three}}
+
+</body>
+
+<template name="three">
+
+</template>
