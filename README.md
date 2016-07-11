@@ -5,7 +5,7 @@ three.js (WebGL) that connect with ROS and replicate the TurtleSim movement.
 
 This project runs on Ubuntu 14.04.
 
-To install and configure run setup.sh (install packages for ROS indigo).
+To install and configure run ***setup.sh**** (install packages for ROS indigo).
 
 
 #Run Turtlesim-Web
