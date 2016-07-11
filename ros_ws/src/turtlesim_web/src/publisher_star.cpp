@@ -121,7 +121,7 @@ int main(int argc, char **argv) {
     ros::Subscriber pose_subscriber = n.subscribe("/turtle1/pose", 100, &poseCallBack);
     ros::Publisher velocity_publisher = n.advertise<geometry_msgs::Twist>("/turtle1/cmd_vel", 100);
     
-    ros::Rate loop_rate(100); //1 message per second
+    ros::Rate loop_rate(100); // 100 message per second
 
     int count = 0;
     while (ros::ok()) // Keep spinning loop until user presses Ctrl+C

@@ -19,18 +19,23 @@ sudo apt-get install ros-indigo-rosbridge-server ros-indigo-turtlesim
 sudo rosdep init
 
 rosdep update
+
 echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
+
 source ~/.bashrc
+
 
 echo
 echo "install meteor"
 curl https://install.meteor.com/ | sh
+
 
 echo
 echo "get code and compile"
 cd ros_ws/
 catkin_make
 source devel/setup.bash
+
 
 cd ..
 cd turtlesim-web-app

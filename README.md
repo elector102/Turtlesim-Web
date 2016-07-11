@@ -39,5 +39,9 @@ Now go to the browser and run : http://localhost:3000/
 Meteor comunicates with [rosbridge](http://wiki.ros.org/rosbridge_suite) through a WebSocket(created for rosbridge) 
 on port 9090 by default. and meteor uses [roslibjs](http://wiki.ros.org/roslibjs).
 
+## Draw Start
 
+in a terminal run:
+
+>rosrun turtlesim_web publisher_star
 
