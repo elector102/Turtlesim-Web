@@ -13,7 +13,7 @@
 
 #define maxY 11.08888912
 #define PI 3.14159265
-#define ni   5 // puntas de la estrella
+#define ni   5 
 
 
 bool objective_reached = false;
