@@ -43,5 +43,5 @@ on port 9090 by default. and meteor uses [roslibjs](http://wiki.ros.org/roslibjs
 
 in a terminal run:
 
->rosrun turtlesim_web publisher_star
+> rosrun turtlesim_web publisher_star
 
