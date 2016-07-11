@@ -16,7 +16,7 @@ To install and configure run setup.sh (install packages for ROS indigo).
 
 In separate terminals, start: 
 
-> roscore  --> [ROS]
+> roscore  --> [RosCore](http://wiki.ros.org/roscore)
 
 >rosrun turtlesim turtlesim_node   -->   [TurtleSim](http://wiki.ros.org/turtlesim/Tutorials)
 
