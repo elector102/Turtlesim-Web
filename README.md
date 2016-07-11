@@ -7,27 +7,31 @@ This project running on Ubuntu 14.04
 
 For install and configure run setup.sh
 
-Run Turtlesim-Web
+
+
+#Run Turtlesim-Web
+
 
 ##ROS
 
+
 In separate terminals, start: 
 
->roscore  --> [ROS]
+>roscore   -->   [RosCore](http://wiki.ros.org/roscore)
 
->rosrun turtlesim turtlesim_node  --> [TurtleSim](http://wiki.ros.org/turtlesim/Tutorials)
+>rosrun turtlesim turtlesim_node   -->   [TurtleSim](http://wiki.ros.org/turtlesim/Tutorials)
 
 
-roslaunch rosbridge_server rosbridge_websocket.launch  -> [RosBridge](http://wiki.ros.org/rosbridge_suite)
+>roslaunch rosbridge_server rosbridge_websocket.launch   -->   [RosBridge](http://wiki.ros.org/rosbridge_suite)
 
 
 ##Web Page
 
 in Turtlesim-Web/turtlesim-web-app run in other terminal:
-...
+
 >meteor
-...
-expected to appear : => => App running at: http://localhost:3000/
+
+expected to appear : "=> App running at: http://localhost:3000/"
 
 Now go to the browser and run : http://localhost:3000/
 
