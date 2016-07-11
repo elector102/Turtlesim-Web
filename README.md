@@ -12,15 +12,15 @@ Run Turtlesim-Web
 ##ROS
 
 In separate terminals, start: 
-...
+
 >roscore  --> [ROS]
-...
-...
+
 >rosrun turtlesim turtlesim_node  --> [TurtleSim](http://wiki.ros.org/turtlesim/Tutorials)
-...
-...
-roslaunch rosbridge_server rosbridge_websocket.launch  --> [RosBridge](http://wiki.ros.org/rosbridge_suite)
-...
+
+
+roslaunch rosbridge_server rosbridge_websocket.launch  -> [RosBridge](http://wiki.ros.org/rosbridge_suite)
+
+
 ##Web Page
 
 in Turtlesim-Web/turtlesim-web-app run in other terminal:
