@@ -15,9 +15,8 @@
 #define PI 3.14159265
 #define ni   5 // puntas de la estrella
 
-std::vector<turtlesim::Pose> STAR;
+
 bool objective_reached = false;
-bool start_point_reached = false;
 bool rotation_reached = false;
 double thetaObjective = 0;
 
@@ -25,7 +24,7 @@ int actual_objective = 0;
 
 bool first_time = true;
 
-
+std::vector<turtlesim::Pose> STAR;
 turtlesim::PoseConstPtr pose_d;
 geometry_msgs::Pose pasicion;
 geometry_msgs::Pose pose_actual;
@@ -36,21 +35,15 @@ bool hasReachedObjective(){
     return fabsf(pose_d->x - STAR[actual_objective].x) < 0.1 && fabsf(pose_d->y - STAR[actual_objective].y) < 0.1;
 }
 
-bool hasReachedStartPoint(){
-    return fabsf(pose_d->x - startPose.x) < 0.1 && fabsf(pose_d->y - startPose.y) < 0.1;
-    
-}
-
 bool hasReachedRotation(){
     return (bool)(fabsf(pose_d->theta - thetaObjective) < 0.01);    
 }
 
-
-//double ly(double y) { return maxY - y; }
-
+// calculate polygon point
 void computePolygon(turtlesim::PoseConstPtr center)
 {
     turtlesim::Pose aux;
+    std::vector<turtlesim::Pose> ordenada;
     double r = 2,
            cx = center->x - r,
            cy = center->y,
@@ -66,7 +59,7 @@ void computePolygon(turtlesim::PoseConstPtr center)
         x = r * cos(i * theta);
         y = r * sin(i * theta);
  
-        // Rotate the polygon such that the mouse click matches the  polygon corner
+        // Rotate the polygon 
         xPrime = x * cos(beta) - y * sin(beta);
         yPrime = x * sin(beta) + y * cos(beta);
         
@@ -78,9 +71,9 @@ void computePolygon(turtlesim::PoseConstPtr center)
         
         STAR.push_back(aux);
     }
- 
 }
 
+// calculate the theta to the objective
 void newThetaObjective(){
     double d_x;
     double d_y;
@@ -96,40 +89,38 @@ void newThetaObjective(){
         thetaObjective = thetaAux;
     }        
 }
+
+// Executed each time a new pose message arrives. 
 void poseCallBack(const turtlesim::PoseConstPtr& pose){
     pose_d = pose;
         
     if(first_time){
-        ROS_INFO_NAMED("circle", "First pose received");
+        ROS_INFO_NAMED(" STAR ", "First pose received");
         first_time = false;
         startPose.x = pose->x;
         startPose.y = pose->y;
         startPose.theta = pose->theta;
-        computePolygon(pose);        
+        computePolygon(pose); 
     }
     if(hasReachedRotation()){
-        ROS_INFO_ONCE_NAMED("circle", "Rotation reached");
+        ROS_INFO_ONCE_NAMED(" STAR", "Rotation reached");
         rotation_reached = true;
     }
     if(hasReachedObjective()){
-        ROS_INFO_ONCE_NAMED("circle", "Objective reached");
+        ROS_INFO_ONCE_NAMED(" STAR ", "Objective reached");
         objective_reached = true;
         rotation_reached = false;
-    }
-
-    if(hasReachedStartPoint()){
-        ROS_INFO_ONCE_NAMED("circle", "Start Point reached");
-        start_point_reached = true;
     }
 }
 
 int main(int argc, char **argv) {
-    // Initiate new ROS node named "talker"
+    // Initiate new ROS node named "publisherStar"
     ros::init(argc, argv, "publisherStar");
     ros::NodeHandle n;
 
     ros::Subscriber pose_subscriber = n.subscribe("/turtle1/pose", 100, &poseCallBack);
     ros::Publisher velocity_publisher = n.advertise<geometry_msgs::Twist>("/turtle1/cmd_vel", 100);
+    
     ros::Rate loop_rate(100); //1 message per second
 
     int count = 0;
@@ -141,7 +132,6 @@ int main(int argc, char **argv) {
 
         if (!first_time) {
             if (objective_reached) {
-
                 actual_objective += 2;
                 if (actual_objective > 4) {
                     actual_objective -= 5;
@@ -149,7 +139,7 @@ int main(int argc, char **argv) {
                 newThetaObjective();
                 objective_reached = false;
             }  
-            else if (!rotation_reached) {
+            if (!rotation_reached) {
                 //set a random linear velocity in the x-axis
                 vel_msg.linear.x = 0;
                 vel_msg.linear.y = 0;
@@ -159,7 +149,8 @@ int main(int argc, char **argv) {
                 vel_msg.angular.y = 0;
                 vel_msg.angular.z = (double) 1.0;
 
-            } else if (rotation_reached) {
+            } 
+            else {
                 //set a random linear velocity in the x-axis
                 vel_msg.linear.x = (double) 1.0;
                 vel_msg.linear.y = 0;
